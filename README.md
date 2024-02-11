@@ -53,3 +53,10 @@ pip install flask
 pip install subprocess
 ~~~
 
+aparte de las librerias de python tambien es necesario que cuente con una version de postman instalada en su maquina
+la cual puede descargar del siguiente link
+
+~~~
+https://www.postman.com/
+~~~
+
