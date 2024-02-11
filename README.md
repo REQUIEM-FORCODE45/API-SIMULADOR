@@ -42,11 +42,12 @@ https://github.com/NREL/glm.git
 
 ## Librerias necesarias
 para que el codigo funcione de manera correcta son necesarias la siguientes librerias: 
-  <ol>
-    <li>Flask</li>
-    <li>Subprocess</li>
-  </ol>
+<ol>
+  <li>Flask</li>
+  <li>Subprocess</li>
+</ol>
 Si su ambiente de desarrollo no cuenta con las librerias necesarias ejecute los siguientes codigos usando pip
+
 ~~~
 pip install flask
 pip install subprocess
