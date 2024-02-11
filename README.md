@@ -34,7 +34,21 @@ en caso de que la conversion de archivos no funcione puede utilizar la libreria 
 propocionar los archivos json2glm y glm2json que puede significar una alternativa para la conversion datos
 para poder trabjar de manera correcta con la api ya que recibe archivos json de entrada
 
-reposiotrio en github, siga las instrucciones a detalle para poder compilarlo desde su maquina.
+siga las instrucciones a detalle para poder compilarlo desde su maquina.
+
 ~~~
 https://github.com/NREL/glm.git 
 ~~~
+
+## Librerias necesarias
+para que el codigo funcione de manera correcta son necesarias la siguientes librerias: 
+  <ol>
+    <li>Flask</li>
+    <li>Subprocess</li>
+  </ol>
+Si su ambiente de desarrollo no cuenta con las librerias necesarias ejecute los siguientes codigos usando pip
+~~~
+pip install flask
+pip install subprocess
+~~~
+
