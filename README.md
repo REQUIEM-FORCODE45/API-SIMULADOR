@@ -21,7 +21,7 @@ sudo chmod -R g+rwx ~root /usr/local
 sudo adduser $USER root
 ~~~
 
-ES IMPORTANTE REINICIAR SU COMPUTADORA PARA QUE VEA LOS CAMBIOS REFLEJADOS
+ES IMPORTANTE REINICIAR SU COMPUTADORA PARA QUE VEA LOS CAMBIOS REFLEJADOS <br/>
 HIPAS GRIDLABD tambien puede ser compilado desde codigo pero la instalacion se vuelve compleja cuando no se tiene el suficiente conociento sobre LINUX.
 
 ## Transformar documentos GLM a JSON 
