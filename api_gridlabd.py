@@ -15,13 +15,7 @@ def test():
         with open('input.json', 'w') as f:
             json.dump(reg_json, f)
             
-        command = ['./json2glm', '--path-to-file', 'input.json']
-        with open('input.glm','w', encoding="utf-8") as f:  
-            p = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-                                universal_newlines=True, encoding="cp850")
-            f.write(p.stdout)
-            
-        command = ['gridlabd', 'input.glm', '-o', 'templates/output.json']
+        command = [ 'gridlabd', 'input.json', '-o', 'templates/output.json']
         result = subprocess.run(command, capture_output=True, text=True)
         
         SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
