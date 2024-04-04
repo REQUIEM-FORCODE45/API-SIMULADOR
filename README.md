@@ -1,4 +1,4 @@
-# sim-microredes-udenar
+# sim-microrredes-udenar
 ~~~
 https://github.com/arras-energy/gridlabd.git
 https://github.com/NREL/glm.git 
