@@ -1,0 +1,11 @@
+
+{
+    "format": "JSON",
+    "output": {
+      "none": true,
+      "text": false,
+      "report": false,
+      "plot": false
+    }
+  }
+  
