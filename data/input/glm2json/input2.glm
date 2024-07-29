@@ -1,0 +1,189 @@
+module powerflow {
+    lu_solver "KLU";
+    solver_method NR; // Newton-Raphson
+}
+
+module tape;
+module climate;
+module residential {
+    implicit_enduses NONE;
+};
+
+module generators;
+module assert;
+object climate {
+	name "Spokane WA";
+	tmyfile "WA-Spokane-24157.tmy2";
+	interpolate LINEAR;
+}
+
+#set profiler=1
+#set iteration_limit=100000;
+#set threadcount=1;
+#set relax_naming_rules=1;
+
+clock {
+    timezone PST+8PDT;
+    starttime '2009-01-01 00:00:00';
+    stoptime '2009-01-02 00:00:00';
+}
+
+object meter {
+    name Node1;
+    bustype SWING;
+    phases ABCN;
+    voltage_A +13200+0.000j;
+    voltage_B -6600-11431.53j;
+    voltage_C -6600+11431.53j;
+    nominal_voltage 13200;
+}
+
+object transformer {
+    name substation_transformer;
+    from Node1;
+    to Node2;
+    phases ABCN;
+    configuration substation_transformer_config;
+}
+
+object transformer_configuration {
+    name substation_transformer_config;
+    connect_type WYE_WYE;
+    install_type POLETOP;
+    primary_voltage 13200; 
+    secondary_voltage 220;
+    power_rating 0.45 MVA;
+    powerA_rating 0.15 MVA;
+    powerB_rating 0.15 MVA;
+    powerC_rating 0.15 MVA;
+    impedance 0.005+0.089i;
+}
+
+object meter {
+    name Node2;
+    phases ABCN;
+    nominal_voltage 220;
+}
+
+object load {
+    parent Node2;
+    name load1;
+    nominal_voltage 220;
+    phases ABCN;
+    voltage_A +220+0.000j;
+    voltage_B -110-190.526j;
+    voltage_C -110+190.526j;
+    constant_power_A 60000+18000j;
+    constant_power_B 60000+18000j;
+    constant_power_C 60000+18000j;
+}
+
+object overhead_line {
+    name feeder_backbone;
+    phases ABCN;
+    from Node2;
+    to Node3;
+    length 984.252 ft;
+    configuration line_configuration_1;
+}
+
+object line_configuration {
+    name line_configuration_1;
+    conductor_A overhead_line_conductor_1;
+    conductor_B overhead_line_conductor_1;
+    conductor_C overhead_line_conductor_1;
+    conductor_N overhead_line_conductor_1;
+    spacing line_spacing_1;
+}
+
+object line_spacing {
+    name line_spacing_1;
+    distance_AB 57.6 in;
+    distance_BC 57.6 in;
+    distance_AC 57.6 in;
+    distance_AN 51.6 in;
+    distance_BN 51.6 in;
+    distance_CN 51.6 in;
+}
+
+object overhead_line_conductor {
+    name overhead_line_conductor_1;
+    geometric_mean_radius 2.847950cm;
+    resistance 0.71524Ohm/km;
+}
+
+object meter {
+    name Node3;
+    phases ABCN;
+    nominal_voltage 220;
+}
+
+object load {
+    parent Node3;
+    name load2;
+    nominal_voltage 220;
+    phases ABCN;
+    voltage_A +220+0.000j;
+    voltage_B -110-190.526j;
+    voltage_C -110+190.526j;
+    object player {
+        property constant_power_A;
+        file perfil_de_carga.player;
+    };
+
+    object player {
+        property constant_power_B;
+        file perfil_de_carga.player;
+    };
+
+    object player {
+        property constant_power_C;
+        file perfil_de_carga.player;
+    };    
+
+}
+
+object inverter {
+	name b1m1_solar_inv;
+	phases ABCN;
+	parent Node2;
+	generator_status ONLINE;
+	inverter_type FOUR_QUADRANT;
+    four_quadrant_control_mode CONSTANT_PF;
+    generator_mode SUPPLY_DRIVEN;
+    inverter_efficiency .95;
+	rated_power 6000;
+    object multi_recorder{
+        name data_solar;
+        interval 5;
+        file csv/data_solar.csv;
+        property P_Out, Q_Out, V_In;
+
+    };
+}
+
+object battery {
+	name batt1;
+	parent b1m1_solar_inv;
+	use_internal_battery_model true;
+	battery_type LI_ION;
+	Energy 200.0 kWh;
+	base_efficiency 1.0;
+	state_of_charge 1.0;
+	generator_mode SUPPLY_DRIVEN;
+
+}
+
+object solar {
+	name b1m1_solar;
+	parent b1m1_solar_inv;
+	panel_type SINGLE_CRYSTAL_SILICON;
+	area 250 ft^2;
+	tilt_angle 47.0;
+	efficiency 0.535;
+	orientation_azimuth 180; //equator-facing (South)
+	orientation FIXED_AXIS;
+	SOLAR_TILT_MODEL SOLPOS;
+	SOLAR_POWER_MODEL FLATPLATE;
+}
+
