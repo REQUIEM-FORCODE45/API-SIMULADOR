@@ -2959,7 +2959,7 @@
 			"trl" : "9",
 			"module" : "powerflow",
 			"profiler.numobjs" : "9",
-			"profiler.clocks" : "34",
+			"profiler.clocks" : "21",
 			"profiler.count" : "1",
 			"ice_thickness" : {
 				"type" : "double",
@@ -2992,7 +2992,7 @@
 			"trl" : "9",
 			"module" : "powerflow",
 			"profiler.numobjs" : "3",
-			"profiler.clocks" : "3",
+			"profiler.clocks" : "2",
 			"profiler.count" : "3",
 			"geometric_mean_radius" : {
 				"type" : "double",
@@ -3061,7 +3061,7 @@
 			"trl" : "9",
 			"module" : "powerflow",
 			"profiler.numobjs" : "2",
-			"profiler.clocks" : "2",
+			"profiler.clocks" : "1",
 			"profiler.count" : "2",
 			"outer_diameter" : {
 				"type" : "double",
@@ -3185,7 +3185,7 @@
 			"trl" : "9",
 			"module" : "powerflow",
 			"profiler.numobjs" : "7",
-			"profiler.clocks" : "0",
+			"profiler.clocks" : "1",
 			"profiler.count" : "7",
 			"conductor_A" : {
 				"type" : "object",
@@ -5564,7 +5564,7 @@
 			"trl" : "9",
 			"module" : "powerflow",
 			"profiler.numobjs" : "1",
-			"profiler.clocks" : "1",
+			"profiler.clocks" : "0",
 			"profiler.count" : "1",
 			"conductor_1" : {
 				"type" : "object",
@@ -5652,7 +5652,7 @@
 			"trl" : "9",
 			"module" : "powerflow",
 			"profiler.numobjs" : "1",
-			"profiler.clocks" : "1722291513664560",
+			"profiler.clocks" : "1722295882491238",
 			"profiler.count" : "1",
 			"resistance" : {
 				"type" : "double",
@@ -14438,7 +14438,7 @@
 		"randomstate" : {
 			"type" : "int32",
 			"access" : "PUBLIC",
-			"value" : "884348347"
+			"value" : "208707280"
 		},
 		"randomseed" : {
 			"type" : "int32",
